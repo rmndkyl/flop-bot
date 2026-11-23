@@ -1,4 +1,4 @@
-# FLOP Network Bot — `flop-bot` v1.0.0
+# FLOP Network Bot — `flop-bot` v1.0.1
 
 Bot fleet untuk **FLOP Network** (`@flop_labs`) — L1 proof-of-inference milik Arthur Hayes
 (BitMEX). Fokus pada satu-satunya lane yang tidak butuh GPU dan tidak butuh modal:
@@ -15,7 +15,7 @@ Bot fleet untuk **FLOP Network** (`@flop_labs`) — L1 proof-of-inference milik 
 | Gateway enroll | challenge → signature sr25519 → bearer key model-scoped |
 | Agent inference | `chat/completions` berbayar dengan pool prompt riset, bukan filler |
 | Technocore DID | `did:key` Ed25519 per wallet, `say-signed` terverifikasi server + registry `kv/did` |
-| Testnet watcher | deteksi cutover devnet → testnet, exit code 10 untuk notifikasi cron |
+| Testnet watcher | deteksi cutover devnet → testnet dari CLI resmi, tulis `network-state.json`, run berikutnya otomatis pakai RPC/faucet/gateway testnet, exit code 10 untuk notifikasi cron |
 | Status | tabel fleet: saldo, key, DID, aktivitas hari ini |
 
 ## Humanisasi (biar tidak kelihatan satu skrip)
@@ -32,6 +32,8 @@ Bot fleet untuk **FLOP Network** (`@flop_labs`) — L1 proof-of-inference milik 
 - **Devnet tidak bernilai dan tidak dihitung airdrop** — ini tertulis di dokumentasi resmi.
   Bot ini menyiapkan fleet, bukan mencetak token.
 - Testnet: target 24 November 2026 (bisa geser), ±90 hari. Mainnet + TGE Q1 2027.
+- **Cutover otomatis.** Watcher membaca profil testnet dari `@flop-labs/cli`; begitu live,
+  `daily` run berikutnya langsung di endpoint testnet tanpa konfigurasi manual.
 - Enrollment gateway devnet sedang menutup allowance (`503 wallet_enrollment_cap_reached`);
   bot mencoba ulang tiap hari dan menyimpan key otomatis saat terbuka.
 - Satu IP tetap satu cluster di mata reviewer. Bot menjaga jumlah wallet kecil, bukan
