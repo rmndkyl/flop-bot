@@ -1,10 +1,13 @@
-# FLOP Network Bot — `flop-bot` v1.0.1
+# FLOP Network Bot — `flop-bot` v1.0.2
 
 Bot fleet untuk **FLOP Network** (`@flop_labs`) — L1 proof-of-inference milik Arthur Hayes
 (BitMEX). Fokus pada satu-satunya lane yang tidak butuh GPU dan tidak butuh modal:
 **agent** (24% genesis pool = 596.030.400 FLOP di yellow paper v0.5).
 
 > Repo ini showcase. Source code lengkap ada di repo private, akses lewat lisensi.
+
+> v1.0.2 (24 Nov 2026): enrollment gateway balik `200` — bearer key lane agent terbukti
+> end-to-end; crash WASM saat signing dan inference `400 unsupported_capability` sudah diperbaiki.
 
 ## Yang dikerjakan bot ini
 
